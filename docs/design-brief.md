@@ -4,22 +4,24 @@ The main purpose of this mod is to provide a flexible & compacts approach to aut
 
 This mod adds the following:
 
-## Bundled Signal Cables
+## Cable Conduit
 - Can only connect to two sides.
-- Contain 16 virtual, colour-coded signal cables
-- Each signal cables contains 8 virtual wires (numbered 0 - 7)
+- Contain 16 virtual, colour-coded cable bundles
+- Each bundle contains 32 virtual cables (numbered 0 - 31)
+- Each cable has 16 virtual wires which carry a 16-bit signal.
+Should render as a 4x4 against wall, ceiling or floor.
+
+### Signals
+The signed range of integer values that can be stored in 16 bits is −32,768 (−1 × 215) through 32,767 (215 − 1); the unsigned range is 0 through 65,535 (216 − 1).
+Floats are currently not implemented! (may add this in future)
+Redstone values are always transmitted in the least significant nybble (if not specified).
+A logical 0 or 1 is always transmitted in the least significant bit (if not specified).
 
 ### Cable bender
 The cable bender is an item (tool) that allows you to 'bend' a cable to alter which way it connects.
 
-### Connector ??
-Connects a bundled cable to a machine or device.
-
 ### Connection box
-Allows for 6 bundled cables to connect to each other. And/Or connects a cable to a machine/device.
-
-### Terminal board
-Allows for 4 bundled cables. Has 4 terminal rows with 128 terminals each. Allows for cross-wiring.
+Allows for 2-4 bundled cables to connect to each other.
 
 ## PLC
 A Programmable Logic Controller (PLC) which can be programmed with either the Ladder Diagram (LD) or the Instruction List (IL) languages.
@@ -36,14 +38,16 @@ The PLC has functions that do not exist in Real life:
 ## Instrumentation
 Basically these are all machines, instruments, sensors, etc. used to control your factory.
 
-They have built-in terminal GUIs.
+They have built-in terminal GUIs. Each terminal is coded: bundlecolor-cable#-wire#
+OR: Use an intermediary I/O connector?
 Commonly used terminals are:
-- Redstone input
-- Redstone output
+- Redstone input (send/write)
+- Redstone output (read)
 - Power used
 - Power stored
 - Scan item
 - Scan entity
+- Scan inventory (slot#)
 - Signal value (e.g. a string or integer) (Command function)
 - Other (E.g. damage or tool-damage, etc.)
 
@@ -59,7 +63,7 @@ Types of instruments:
 - Displays
 - Redstone connector
 - Screen
-- Show amount of items/blocks in container
+- Show amount of items/blocks in container or slot
 - Show detected entity
 - Show redstone value, used/stored power, Name of machine/instrument
 
@@ -71,10 +75,12 @@ It has 2 rows of 8x8 terminals.
 ### Power
 Cables. Can be controlled with switch or relay.
 Switches & relays go in-line. Switches expose to face (cable-bender controlled)
+NB: In-line means they do not output a Rs-signal but have a state (open/closed)
 
 ### Fluid
 Pipes. Can be controlled with valves/solenoids.
 Valves and solenoids go in-line. Valves expose to face (cable bender controlled)
+NB: In-line means they do not output a Rs-signal but have a state (open/closed)
 
 ### Gas
 Pipes. Idem.
@@ -85,12 +91,7 @@ Pipes. Idem.
 #### rail-functionality
 
 
-## Signals
-All signals are 16-bit, so each wire can potentially carry 16 signals at once or:
-The signed range of integer values that can be stored in 16 bits is −32,768 (−1 × 215) through 32,767 (215 − 1); the unsigned range is 0 through 65,535 (216 − 1).
-Floats are currently not implemented! (may add this in future)
-Redstone values are always transmitted in the least significant nybble (if not specified).
-A logical 0 or 1 is always transmitted in the least significant bit (if not specified).
+
 
 ## Notation in PLC
 Input and Output have coloured background indicating the cable and a number indicating he wire.
