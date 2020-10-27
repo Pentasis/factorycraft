@@ -1,4 +1,4 @@
-package pentasis.factorycraft.common.objects.items.definition;
+package pentasis.factorycraft.objects.items.definition;
 
 import net.minecraft.item.Item;
 

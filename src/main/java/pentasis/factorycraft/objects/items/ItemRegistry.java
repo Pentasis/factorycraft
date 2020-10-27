@@ -1,11 +1,10 @@
-package pentasis.factorycraft.common.objects.items;
+package pentasis.factorycraft.objects.items;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import pentasis.factorycraft.common.objects.items.definition.CableBenderItem;
+import pentasis.factorycraft.objects.items.definition.CableBenderItem;
 
 import static pentasis.factorycraft.FactoryCraft.MODID;
 
